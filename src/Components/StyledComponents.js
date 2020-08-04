@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 
+import search from "../img/search.svg";
+
 const bgWhite = `249,252,255`;
 const deepPurple = `36,15,82`;
 const purple = `98,54,255`;
@@ -155,8 +157,58 @@ export const GolbalCard = styled.div`
   }
 
   @media (min-width: 768px) {
+    margin-bottom: 30px;
     & + div {
       margin-top: 0px;
     }
   }
+
+  @media (min-width: 1700px) {
+    margin: 0px
+  }
+`;
+
+export const BigCard = styled.div`
+  padding: 20px;
+  background: #fff;
+  border-radius: 40px;
+  box-shadow: 10px 10px 60px rgba(${shadow}, 0.25);
+  margin-top: 75px;
+
+  @media (min-width: 768px){
+    padding: 50px;
+  }
+`;
+
+export const Form = styled.form`
+position: relative;
+  input{
+    font-size: 14px;
+    padding: 15px 15px 15px 60px;
+    border-radius: 60px;
+    line-height: 1;
+    border: none;
+    background: rgb(${bgWhite});
+    box-shadow: inset 0px 0px 20px rgba(${shadow}, 0.15);
+    outline: none;
+    width: 290px;
+    
+
+    ::placeholder{
+      color: rgba(${deepPurple}, 0.5);
+    }
+  }
+  &::before{
+      content: '';
+      display: block;
+      height: 20px;
+      width: 20px;
+      background: url(${search});
+      position: absolute;
+      top: 15px;
+      bottom: auto;
+      left: 20px;
+      right: auto;
+      pointer-events: none;
+    }
 `;
