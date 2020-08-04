@@ -1,0 +1,45 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// Fonts
+$primary-font: 'Poppins', sans-serif;
+// $secondary-font: 'Montserrat', sans-serif;
+
+/// Font-size
+$body-font-size: 16px;
+$buttons-font-size: 16px;
+
+//custom pallete
+$purple: #6236FF;
+$green: #1CB142;
+$orange: #FA6400;
+$red: #F9345E;
+$deepPurple: #240F52;
+$bg-white: #F9FCFF;
+$shadow: #817C9B;
+
+/// Copy text
+/// @type Color
+$text-color: $deepPurple !default;
+
+/// Default colors
+$white: #fff;
+$black: #000;
+$grey: #ccc;
+$wrongurl-color: #eee;
+
+// Company color pallete
+$primary-color: #6236FF;
+$secondary-color: $black;
+$third-color: $secondary-color;
+
+// Button and hover color
+$btn-color: $primary-color;
+$hover-color: $third-color;
+$internals-links: $hover-color;
+
+$body-color: $deepPurple;
+
+
+$base-url: '/assets/' !default;
