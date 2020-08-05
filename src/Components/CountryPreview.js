@@ -1,4 +1,5 @@
 import React from "react";
+// import { Link } from 'react-router-dom'
 import { CountryPreviewItem } from "./StyledComponents";
 import { replaceHyphen, addCommas, formatDate } from "./helpers";
 
@@ -13,6 +14,7 @@ const CountryPreview = ({ country, updateSelectedCountry }) => {
       className="country-link"
       title={country.country}
       onClick={handleClick}
+      // href={`/country/${country.country}`}
     >
       <div className="min-card">
         <div className="header">

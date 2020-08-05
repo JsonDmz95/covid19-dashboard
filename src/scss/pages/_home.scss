@@ -20,6 +20,61 @@
   border: none;
 }
 
+.card-container{
+  display: block;
+  width: 100%;
+
+  @include on-event{
+    .blueCard{
+      box-shadow: 20px 30px 30px rgba($primary-color, 0);
+
+      .head{
+        img{
+          transform: translateX(5px);
+        }
+      }
+    }
+  }
+}
+
+.blueCard{
+  display: block;
+  width: 100%;
+  padding: 0px 30px 50px 30px;
+  background: $primary-color;
+  box-shadow: 20px 30px 30px rgba($primary-color, 0.2);
+  border-radius: 40px;
+  transition: all ease 0.5s;
+
+  .img-fluid{
+    margin-top: -113px;
+    margin-left: -25px;
+  }
+  
+  .head{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    img{
+      margin: 0;
+      transition: all ease 0.5s;
+    }
+    h3{
+      color: $white;
+      font-size: 18px;
+      margin-bottom: 0px;
+    }
+  }
+
+  p{
+    color: $white;
+    margin: 0px;
+  }
+}
+
 @media(min-width: 768px) {
   #root {
     display: flex;

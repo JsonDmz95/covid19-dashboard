@@ -24,7 +24,7 @@ const ContinentCollapse = ({
         <a
           className="card-link"
           data-toggle="collapse"
-          href="#country-info"
+          href={`#collapse-${idContinent}`}
           title={header}
         >
           {header}

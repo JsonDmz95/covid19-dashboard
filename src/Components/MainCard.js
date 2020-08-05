@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+
+
 import axios from "axios";
 
 import Spinner from "./Spinner";
@@ -127,6 +129,8 @@ const MainCard = () => {
 
       // let field= document.getElementById("country")
       updateMemory(mapedList[0].country);
+
+      // this.props.history.push(`/country/${mapedList[0].country}`);
     }
   };
   // END OF on enter

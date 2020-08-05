@@ -4,15 +4,15 @@ import { CountryInfo } from "./StyledComponents";
 import { replaceHyphen, formatDate, addCommas } from "./helpers";
 
 const SelectedInfo = ({ selectedCountry }) => {
-  console.log(selectedCountry);
+  // console.log(selectedCountry);
   //Destructuring
   const { country, time, cases, deaths, tests } = selectedCountry;
   let { continent } = selectedCountry;
   //END OF Destructuring
-  if (continent == null) {
+  if (continent === null) {
     continent = "Others";
   } else {
-    if (continent == "North-America") {
+    if (continent === "North-America") {
       continent = "North & Central America";
     }
   }
