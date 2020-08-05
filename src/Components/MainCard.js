@@ -1,13 +1,23 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import Spinner from "./Spinner";
 import ContinentCollapse from "./ContinentCollapse";
+import SelectedInfo from "./SelectedInfo";
 
-import { axiosConfig } from "./helpers";
-import { BigCard, Form } from "./StyledComponents";
+import { axiosConfig, replaceSpace } from "./helpers";
+import { BigCard, Form, EmptyMessage } from "./StyledComponents";
+import HolderImg from "../img/holder.png";
 
 const MainCard = () => {
+
+  // Guaradar Consulta 
+  let saved = JSON.parse(localStorage.getItem('search'));
+  if(!saved){
+    saved = "";
+  }
+  // END OF Guaradar Consulta 
+
   // States
   const [completeList, updateCompleteList] = useState([]);
   const [mapedList, updateMapedList] = useState([]);
@@ -22,8 +32,24 @@ const MainCard = () => {
 
   const [open, updateOpen] = useState(false);
   const [loading, updateLoading] = useState(true);
+  const [emptySearch, updateEmptySearch] = useState(false);
 
+  const [selectedCountry, updateSelectedCountry] = useState({});
+
+  const [memory, updateMemory] = useState(saved);
   // END OF States
+
+  // Get last search 
+  useEffect(() => {
+    // let saved = JSON.parse(localStorage.getItem('search'));
+
+    if(saved){
+      localStorage.setItem('search', JSON.stringify(memory))
+    }else{
+      localStorage.setItem('search', JSON.stringify([]))
+    }
+  }, [memory, saved]);
+  // END OF Get last search 
 
   //Get all countries data
   useEffect(() => {
@@ -31,7 +57,6 @@ const MainCard = () => {
       const url = "https://covid-193.p.rapidapi.com/statistics";
 
       const response = await axios.get(url, axiosConfig);
-      // console.log(response.data.response);
       updateCompleteList(response.data.response);
       updateMapedList(response.data.response);
 
@@ -75,13 +100,20 @@ const MainCard = () => {
     if (value === "" || value.trim() === "") {
       updateMapedList(completeList);
       updateOpen(false);
+      updateEmptySearch(false);
     } else {
       updateMapedList(
         completeList.filter((country) =>
-          country.country.toLowerCase().includes(value.toLowerCase())
+          country.country.toLowerCase().includes(replaceSpace(value).toLowerCase())
         )
       );
       updateOpen(true);
+    }
+
+    if (mapedList.length === 0) {
+      updateEmptySearch(true);
+    } else {
+      updateEmptySearch(false);
     }
   };
   //END OF When the user type on the serach field
@@ -89,13 +121,24 @@ const MainCard = () => {
   //On enter
   const hadleSubmitt = (e) => {
     e.preventDefault();
+
+    if (mapedList.length === 1) {
+      updateSelectedCountry(mapedList[0]);
+
+      // let field= document.getElementById("country")
+      updateMemory(mapedList[0].country);
+    }
   };
   // END OF on enter
 
   return (
-    // <h2>Main Card goes here</h2>
     <BigCard>
-      <div className="country-info"></div>
+      <div className="country-info">
+        {Object.keys(selectedCountry).length === 0 ? 
+          <img src={HolderImg} className="img-fluid d-block" alt="Holder"/>
+        :  <SelectedInfo selectedCountry={selectedCountry}/>
+        }
+      </div>
       <div className="searcher">
         <Form onSubmit={hadleSubmitt}>
           <input
@@ -104,6 +147,7 @@ const MainCard = () => {
             name="country"
             id="country"
             onChange={handleChange}
+            // value={memory}
           />
         </Form>
 
@@ -113,6 +157,7 @@ const MainCard = () => {
           <div id="continents-acordeon">
             {nortamericaList.length > 0 ? (
               <ContinentCollapse
+                updateSelectedCountry={updateSelectedCountry}
                 open={open}
                 countriesList={nortamericaList}
                 header="North & Central America"
@@ -121,6 +166,7 @@ const MainCard = () => {
 
             {southamericaList.length > 0 ? (
               <ContinentCollapse
+                updateSelectedCountry={updateSelectedCountry}
                 open={open}
                 countriesList={southamericaList}
                 header="South America"
@@ -129,14 +175,16 @@ const MainCard = () => {
 
             {africaList.length > 0 ? (
               <ContinentCollapse
+                updateSelectedCountry={updateSelectedCountry}
                 open={open}
                 countriesList={africaList}
-                header="Arfica"
+                header="Africa"
               />
             ) : null}
 
             {asiaList.length > 0 ? (
               <ContinentCollapse
+                updateSelectedCountry={updateSelectedCountry}
                 open={open}
                 countriesList={asiaList}
                 header="Asia"
@@ -145,6 +193,7 @@ const MainCard = () => {
 
             {europeList.length > 0 ? (
               <ContinentCollapse
+                updateSelectedCountry={updateSelectedCountry}
                 open={open}
                 countriesList={europeList}
                 header="Europe"
@@ -153,6 +202,7 @@ const MainCard = () => {
 
             {oceaniaList.length > 0 ? (
               <ContinentCollapse
+                updateSelectedCountry={updateSelectedCountry}
                 open={open}
                 countriesList={oceaniaList}
                 header="Oceania"
@@ -161,10 +211,17 @@ const MainCard = () => {
 
             {othersList.length > 0 ? (
               <ContinentCollapse
+                updateSelectedCountry={updateSelectedCountry}
                 open={open}
                 countriesList={othersList}
                 header="Others"
               />
+            ) : null}
+
+            {emptySearch ? (
+              <EmptyMessage>
+                Your search did not match any result :(
+              </EmptyMessage>
             ) : null}
           </div>
         </div>

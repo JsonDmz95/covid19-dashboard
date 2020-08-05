@@ -182,9 +182,19 @@ export const BigCard = styled.div`
 
   @media (min-width: 768px) {
     padding: 50px;
+    display: flex;
+    flex-direction: row-reverse;
+
+    .country-info{
+      flex: 1;
+
+      img{
+        opacity: 0.85
+      }
+    }
   }
 
-  @media (min-width: 1200px){
+  @media (min-width: 1600px){
     margin-top: 75px;
   }
 `;
@@ -257,6 +267,7 @@ export const CountryPreviewItem = styled.a`
   display: block;
   padding: 15px 20px;
   color: rgb(${deepPurple});
+  cursor: pointer;
 
   .header{
     font-size: 16px;
@@ -270,5 +281,87 @@ export const CountryPreviewItem = styled.a`
   p{
     margin-bottom: 5px;
     font-size: 14px;
+  }
+`;
+
+export const EmptyMessage = styled.p`
+  margin-bottom: 0px;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 700;
+  /* text-transform: uppercase; */
+  line-height: 1.5;
+  color: rgb(${red});
+`;
+
+export const CountryInfo = styled.div`
+  padding-bottom: 30px;
+
+  .country-name{
+    font-size: 36px;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+  }
+
+  .country-continent{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .updated{
+    margin-bottom: 0px;
+    font-size: 14px;
+
+    b{
+      font-weight: 600;
+    }
+  }
+
+  .data-container{
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .data-item{
+      .data-title{
+        font-size: 16px;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .data-quantity{
+          font-size: 35px;
+
+          &.purple{
+            color: rgb(${purple});
+          }
+          &.green{
+            color: rgb(${green});
+          }
+          &.orange{
+            color: rgb(${orange});
+          }
+          &.red{
+            color: rgb(${red});
+          }
+        }
+    }
+  }
+
+  @media (min-width: 768px){
+    padding-bottom: 0px;
+    padding-left: 20px;
+  }
+
+  @media (min-width: 992px){
+    padding-left: 30px;
+  }
+
+  @media (min-width: 1200px){
+    padding-left: 50px;
   }
 `;

@@ -6,6 +6,10 @@ export function replaceHyphen(string) {
   return string.replace(/-/g,' ');
 }
 
+export function replaceSpace(string) {
+  return string.replace(/\s/g ,'-');
+}
+
 export function formatDate(fullDate){
   const formated = new Date(fullDate);
   // console.log(formated);

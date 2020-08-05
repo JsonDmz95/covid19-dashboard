@@ -55,7 +55,8 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            width: 310px;
+            // width: 310px;
+            width: 250px;
           }
         }
       }
@@ -65,14 +66,16 @@
 
 @media(min-width: 1200px){
   #root {
-    height: 100vh;
+    min-height: 100vh;
   }
-
+  
+  .main-panel .main-conatiner > .row .data-col .searcher{
+    width: 310px;
+  }
 }
 
-@media (min-height: 1200px){
-  #root {
-    height: 100vh;
+@media(min-width: 1400px){
+  .main-panel .main-conatiner > .row .data-col .searcher{
+    width: 400px;
   }
-
 }

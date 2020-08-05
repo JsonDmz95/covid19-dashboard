@@ -2,14 +2,17 @@ import React from "react";
 import { CountryPreviewItem } from "./StyledComponents";
 import { replaceHyphen, addCommas, formatDate } from "./helpers";
 
-const CountryPreview = ({ country }) => {
-  // const updated = new Date(country.time);
-  // console.log(updated.getDate());
+const CountryPreview = ({ country, updateSelectedCountry }) => {
+
+  const handleClick = () => {
+    updateSelectedCountry(country);
+  }
+
   return (
     <CountryPreviewItem
-      href="/#"
       className="country-link"
       title={country.country}
+      onClick={handleClick}
     >
       <div className="min-card">
         <div className="header">
