@@ -1,32 +1,78 @@
-.main-panel{
+.main-panel {
   padding: 30px 5px;
   min-height: 500px;
   background: $bg-white;
   border-radius: 30px 30px 0px 0px;
 
-  .cards-container{
+  .cards-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
   }
 }
 
-@media(min-width: 768px){
-  #root{
+.list-countries {
+  flex: 1;
+  overflow-y: scroll;
+}
+
+.card {
+  border: none;
+}
+
+@media(min-width: 768px) {
+  #root {
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    // height: 100vh;
   }
 
-  .main-panel{
+  .main-panel {
     padding: 50px 35px;
     flex: 1;
     border-radius: 50px 0px 0px 50px;
 
-    .cards-container{
+    display: flex;
+    flex-direction: column;
+
+    .cards-container {
       flex-direction: row;
       justify-content: space-between;
       flex-wrap: wrap;
     }
+
+    .main-conatiner {
+      flex: 1;
+
+      >.row {
+        height: 100%;
+
+        .data-col {
+          display: flex;
+          flex-direction: column;
+
+          .searcher {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            width: 310px;
+          }
+        }
+      }
+    }
   }
+}
+
+@media(min-width: 1200px){
+  #root {
+    height: 100vh;
+  }
+
+}
+
+@media (min-height: 1200px){
+  #root {
+    height: 100vh;
+  }
+
 }

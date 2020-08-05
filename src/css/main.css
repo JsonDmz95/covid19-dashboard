@@ -40,12 +40,32 @@ a {
 
 a:hover, a:active, a:focus {
   color: #000;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 ::selection {
   background: #6236FF;
   color: #fff;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #F0F3F7;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #DFDAF0;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #DFDAF0;
 }
 
 .clearfix::after {
@@ -168,21 +188,59 @@ nav ul {
   justify-content: flex-start;
 }
 
+.list-countries {
+  flex: 1;
+  overflow-y: scroll;
+}
+
+.card {
+  border: none;
+}
+
 @media (min-width: 768px) {
   #root {
     display: flex;
     flex-direction: row;
-    height: 100vh;
   }
   .main-panel {
     padding: 50px 35px;
     flex: 1;
     border-radius: 50px 0px 0px 50px;
+    display: flex;
+    flex-direction: column;
   }
   .main-panel .cards-container {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+  }
+  .main-panel .main-conatiner {
+    flex: 1;
+  }
+  .main-panel .main-conatiner > .row {
+    height: 100%;
+  }
+  .main-panel .main-conatiner > .row .data-col {
+    display: flex;
+    flex-direction: column;
+  }
+  .main-panel .main-conatiner > .row .data-col .searcher {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 310px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #root {
+    height: 100vh;
+  }
+}
+
+@media (min-height: 1200px) {
+  #root {
+    height: 100vh;
   }
 }
 /*# sourceMappingURL=main.css.map */

@@ -38,9 +38,9 @@ const MainPanel = () => {
         </div>
       </div>
 
-      <div className="container-fluid">
+      <div className="container-fluid main-conatiner">
         <div className="row">
-          <div className="col-12 col-lg-10 col-xl-9">
+          <div className="col-12 col-lg-10 col-xl-9 data-col">
             {Object.keys(globalData).length === 0 ? 
               <Spinner />
             : <GlobalTrends globalData={globalData}/>}

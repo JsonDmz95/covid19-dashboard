@@ -164,7 +164,7 @@ export const GolbalCard = styled.div`
   }
 
   @media (min-width: 1700px) {
-    margin: 0px
+    margin: 0px;
   }
 `;
 
@@ -173,16 +173,25 @@ export const BigCard = styled.div`
   background: #fff;
   border-radius: 40px;
   box-shadow: 10px 10px 60px rgba(${shadow}, 0.25);
-  margin-top: 75px;
+  margin-top: 40px;
+  flex: 1;
 
-  @media (min-width: 768px){
+  .list-countries {
+    margin-top: 30px;
+  }
+
+  @media (min-width: 768px) {
     padding: 50px;
+  }
+
+  @media (min-width: 1200px){
+    margin-top: 75px;
   }
 `;
 
 export const Form = styled.form`
-position: relative;
-  input{
+  position: relative;
+  input {
     font-size: 14px;
     padding: 15px 15px 15px 60px;
     border-radius: 60px;
@@ -191,24 +200,75 @@ position: relative;
     background: rgb(${bgWhite});
     box-shadow: inset 0px 0px 20px rgba(${shadow}, 0.15);
     outline: none;
-    width: 290px;
-    
+    /* width: 290px; */
+    width: 100%;
 
-    ::placeholder{
+    ::placeholder {
       color: rgba(${deepPurple}, 0.5);
     }
   }
-  &::before{
-      content: '';
-      display: block;
-      height: 20px;
-      width: 20px;
-      background: url(${search});
-      position: absolute;
-      top: 15px;
-      bottom: auto;
-      left: 20px;
-      right: auto;
-      pointer-events: none;
+  &::before {
+    content: "";
+    display: block;
+    height: 20px;
+    width: 20px;
+    background: url(${search});
+    position: absolute;
+    top: 15px;
+    bottom: auto;
+    left: 20px;
+    right: auto;
+    pointer-events: none;
+  }
+`;
+
+export const CardHeader = styled.div`
+  padding: 0px;
+  background: transparent;
+  border: none;
+
+  &::hover,
+  &:active,
+  &:focus {
+    text-decoration: none !important;
+    outline: none;
+    &::hover,
+    &:active,
+    &:focus {
+      text-decoration: none !important;
+      outline: none;
     }
+  }
+
+  &:first-of-type {
+    border-radius: 0px;
+  }
+
+  .card-link {
+    display: block;
+    padding: 10px 0px 10px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(${purple});
+  }
+`;
+
+export const CountryPreviewItem = styled.a`
+  display: block;
+  padding: 15px 20px;
+  color: rgb(${deepPurple});
+
+  .header{
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  p{
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
 `;

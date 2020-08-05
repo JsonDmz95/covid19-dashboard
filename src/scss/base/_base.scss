@@ -50,7 +50,7 @@ a{
 
   @include on-event{
     color: $hover-color;
-    text-decoration: underline;
+    text-decoration: none;
   }
 }
 
@@ -64,6 +64,26 @@ a{
   background: $primary-color;
   color: $white;
 }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #F0F3F7;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #DFDAF0;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #DFDAF0;
+  }
 
 @media (min-width: 768px) {
 
